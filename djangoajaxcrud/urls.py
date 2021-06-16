@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from enroll import views
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -22,4 +24,4 @@ urlpatterns = [
     path('save/', views.save_data, name='save'),
     path('delete/', views.delete_data, name='delete'),
     path('edit/', views.edit_data, name='edit'),
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
